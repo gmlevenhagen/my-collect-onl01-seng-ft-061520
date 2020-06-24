@@ -1,9 +1,15 @@
-["Tim Jones", "Tom Smith", "Jim Campagno"]
+list = ["Tim Jones", "Tom Smith", "Jim Campagno"]
 
 def my_collect(array)
-   array= ["Tim Jones", "Tom Smith", "Jim Campagno"]
-  my_collect(array) do |name|
-    name.split("").first
+  i=0
+  name_collection = []
+  while i < array.length
+    name_collection.push yield(array[i])
+  # you could also do it this way:
+  # name_collection << yield(array[i])
+    i += 1
   end
-  array
+  name_collection
 end
+
+my_collect(list) {|i| i.split(" ").first}
